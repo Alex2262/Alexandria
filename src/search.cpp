@@ -312,7 +312,7 @@ int AspirationWindowSearch(int prev_eval, int depth, S_ThreadData* td) {
 		(ss + i)->ply = i;
 	}
 	// We set an expected window for the score at the next search depth, this window is not 100% accurate so we might need to try a bigger window and re-search the position
-	int delta = 12;
+	int delta = std::max(5 + static_cast<int>(85 / depth), 8);
 	// define initial alpha beta bounds
 	int alpha = -MAXSCORE;
 	int beta = MAXSCORE;
